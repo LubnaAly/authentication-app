@@ -17,30 +17,50 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var UsergenderLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var signInButtonTapped: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    @IBAction func genderSwitchToggled(_ genderSwitch: UISwitch) {
+        genderLabel.text = genderSwitch.isOn ? Gender.female.rawValue : Gender.male.rawValue
+    }
+    
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        goToSignIn()
+    }
+}
+
+private extension SignUpVC {
+    func setupUI() {
         titleLabel.text = "Sign Up"
         nameLabel.text = "Name"
+        nameTextField.placeholder = "Enter your name"
         emailLabel.text = "Email"
+        emailTextField.placeholder = "Enter your email"
         enterPasswordLabel.text = "Enter Password"
+        enterPasswordTextField.placeholder = "Enter your password"
         confirmPasswordLabel.text = "Confirm Password"
+        confirmPasswordTextField.placeholder = "Confirm your password"
+        UsergenderLabel.text = "Gender"
         signInButtonTapped.setTitle("Sign Up", for: .normal)
-
-        
     }
     
-    @IBAction func genderSwitchToggled(_ sender: Any) {
-        print(#function)
-    }
-    
-
-    @IBAction func signUpButtonTapped(_ sender: Any) {
+    func goToSignIn() {
         if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? SignInVC {
+            signInVC.name = nameTextField.text
+            signInVC.email = emailTextField.text
+            signInVC.gender = genderLabel.text
             navigationController?.pushViewController(signInVC, animated: true)
         }
     }
 }
 
+enum Gender: String {
+    case female = "Female"
+    case male = "Male"
+}

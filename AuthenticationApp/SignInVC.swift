@@ -15,19 +15,36 @@ class SignInVC: UIViewController {
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var signInButtonTapped: UIButton!
     
+    var name: String?
+    var email: String?
+    var gender: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = "Sign In"
-        emailLabel.text = "Email"
-        enterPasswordLabel.text = "Password"
-        signInButtonTapped.setTitle("Sign In", for: .normal)
+        setupUI()
     }
 
     @IBAction func signInButtonTapped(_ sender: Any) {
-        if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as? ProfileVC {
-            navigationController?.pushViewController(profileVC, animated: true)
-        }
+        goToProfile()
+    }
+}
 
+private extension SignInVC {
+    func setupUI() {
+        titleLabel.text = "Sign In"
+        emailLabel.text = "Email"
+        emailTextField.placeholder = "Enter your email"
+        enterPasswordLabel.text = "Password"
+        enterPasswordTextField.placeholder = "Enter your password"
+        signInButtonTapped.setTitle("Sign In", for: .normal)
     }
     
+    func goToProfile() {
+        if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as? ProfileVC {
+            profileVC.name = name
+            profileVC.email = email
+            profileVC.gender = gender
+            navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
 }
