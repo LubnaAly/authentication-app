@@ -15,9 +15,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var signInButtonTapped: UIButton!
     
-    var name: String?
-    var email: String?
-    var gender: String?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +39,7 @@ private extension SignInVC {
     
     func goToProfile() {
         if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as? ProfileVC {
-            profileVC.name = name
-            profileVC.email = email
-            profileVC.gender = gender
+            profileVC.user = user
             navigationController?.pushViewController(profileVC, animated: true)
         }
     }

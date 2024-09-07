@@ -16,9 +16,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var UserEmailLabel: UILabel!
     @IBOutlet weak var UserGenderLabel: UILabel!
 
-    var name: String?
-    var email: String?
-    var gender: String?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +34,8 @@ extension ProfileVC {
     }
     
     func setUserData() {
-        nameLabel.text = name
-        emailLabel.text = email
-        genderLabel.text = gender
+        nameLabel.text = user?.name
+        emailLabel.text = user?.email
+        genderLabel.text = user?.gender
     }
 }

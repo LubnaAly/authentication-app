@@ -52,9 +52,12 @@ private extension SignUpVC {
     
     func goToSignIn() {
         if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? SignInVC {
-            signInVC.name = nameTextField.text
-            signInVC.email = emailTextField.text
-            signInVC.gender = genderLabel.text
+            let user = User(
+                name: nameTextField.text ?? "",
+                email: emailTextField.text ?? "",
+                gender: genderLabel.text ?? ""
+            )
+            signInVC.user = user
             navigationController?.pushViewController(signInVC, animated: true)
         }
     }
@@ -63,4 +66,10 @@ private extension SignUpVC {
 enum Gender: String {
     case female = "Female"
     case male = "Male"
+}
+
+struct User {
+    let name: String
+    let email: String
+    let gender: String
 }
