@@ -55,21 +55,10 @@ private extension SignUpVC {
             let user = User(
                 name: nameTextField.text ?? "",
                 email: emailTextField.text ?? "",
-                gender: genderLabel.text ?? ""
+                gender: Gender(rawValue: genderLabel.text ?? "") ?? .female
             )
             signInVC.user = user
             navigationController?.pushViewController(signInVC, animated: true)
         }
     }
-}
-
-enum Gender: String {
-    case female = "Female"
-    case male = "Male"
-}
-
-struct User {
-    let name: String
-    let email: String
-    let gender: String
 }

@@ -36,6 +36,6 @@ extension ProfileVC {
     func setUserData() {
         nameLabel.text = user?.name
         emailLabel.text = user?.email
-        genderLabel.text = user?.gender
+        genderLabel.text = user?.gender.rawValue
     }
 }
