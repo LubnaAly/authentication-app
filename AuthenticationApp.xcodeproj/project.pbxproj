@@ -303,6 +303,7 @@
 				DEVELOPMENT_TEAM = MNTB6SJY8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthenticationApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Authentication;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -331,6 +332,7 @@
 				DEVELOPMENT_TEAM = MNTB6SJY8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthenticationApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Authentication;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
