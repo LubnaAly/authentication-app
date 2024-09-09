@@ -16,6 +16,7 @@
 		890488152C87224200C77E43 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890488142C87224200C77E43 /* SignInVC.swift */; };
 		890488172C87225F00C77E43 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890488162C87225F00C77E43 /* ProfileVC.swift */; };
 		890621782C8C6B6500FC37D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890621772C8C6B6500FC37D0 /* User.swift */; };
+		8906217E2C8F207F00FC37D0 /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		890488142C87224200C77E43 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		890488162C87225F00C77E43 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		890621772C8C6B6500FC37D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				890488002C871E5400C77E43 /* AppDelegate.swift */,
 				890488022C871E5400C77E43 /* SceneDelegate.swift */,
+				8906217C2C8F205900FC37D0 /* Extentions */,
 				8906217A2C8C6EB100FC37D0 /* Model */,
 				8906217B2C8C6EBF00FC37D0 /* View */,
 				890621792C8C6EA300FC37D0 /* Controller */,
@@ -98,6 +101,14 @@
 				890488062C871E5400C77E43 /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8906217C2C8F205900FC37D0 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				890488052C871E5400C77E43 /* SignUpVC.swift in Sources */,
 				890621782C8C6B6500FC37D0 /* User.swift in Sources */,
 				890488012C871E5400C77E43 /* AppDelegate.swift in Sources */,
+				8906217E2C8F207F00FC37D0 /* UIViewController+showAlert.swift in Sources */,
 				890488152C87224200C77E43 /* SignInVC.swift in Sources */,
 				890488032C871E5400C77E43 /* SceneDelegate.swift in Sources */,
 			);

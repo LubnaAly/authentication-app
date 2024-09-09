@@ -44,7 +44,7 @@ private extension SignInVC {
             return false
         }
         
-        guard isRegisteredEmail() else {
+        guard emailTextField.text == user?.email else {
             showAlertMessage(title: "Alert", message: "Please enter a registered Email!")
             return false
         }
@@ -54,33 +54,12 @@ private extension SignInVC {
             return false
         }
         
-        guard isRegisteredPassword() else {
+        guard enterPasswordTextField.text == user?.password else {
             showAlertMessage(title: "Alert", message: "Please enter the correct Password!")
             return false
         }
         
         return true
-    }
-    
-    func isRegisteredEmail() -> Bool {
-        guard emailTextField.text == user?.email else {
-            return false
-        }
-        return true
-    }
-    
-    func isRegisteredPassword() -> Bool {
-        guard enterPasswordTextField.text == user?.password else {
-            return false
-        }
-        return true
-    }
-    
-    func showAlertMessage(title: String, message: String){
-        let alertMessagePopUpBox = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default)
-        alertMessagePopUpBox.addAction(okButton)
-        self.present(alertMessagePopUpBox, animated: true)
     }
     
     func goToProfile() {
