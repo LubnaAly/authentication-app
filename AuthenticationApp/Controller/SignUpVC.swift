@@ -31,6 +31,7 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        guard isValidUserData() else { return }
         goToSignIn()
     }
 }
@@ -50,11 +51,69 @@ private extension SignUpVC {
         signInButtonTapped.setTitle("Sign Up", for: .normal)
     }
     
+    func isValidUserData() -> Bool {
+        guard let name = nameTextField.text, !name.isEmpty else {
+            showAlertMessage(title: "Alert", message: "Please enter your Name!")
+            return false
+        }
+        
+        guard let email = emailTextField.text, !email.isEmpty else {
+            showAlertMessage(title: "Alert", message: "Please enter your Email!")
+            return false
+        }
+        
+        guard let email = emailTextField.text, isValidEmail(email) else {
+            showAlertMessage(title: "Alert", message: "Please enter a valid Email!")
+            return false
+        }
+        
+        guard let password = enterPasswordTextField.text, !password.isEmpty else {
+            showAlertMessage(title: "Alert", message: "Please enter your Password!")
+            return false
+        }
+        
+        guard let password = enterPasswordTextField.text, isValidPassword(password) else {
+            showAlertMessage(title: "Alert", message: "Please enter a correct Password!")
+            return false
+        }
+        
+        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {
+            showAlertMessage(title: "Alert", message: "Please enter your Confirm your password!")
+            return false
+        }
+        
+        guard confirmPasswordTextField.text == enterPasswordTextField.text else {
+            showAlertMessage(title: "Alert", message: "Please enter the same Password")
+            return false
+        }
+        
+        return true
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func isValidPassword(_ password: String) -> Bool {
+        let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
+    }
+    
+    func showAlertMessage(title: String, message: String){
+        let alertMessagePopUpBox = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default)
+        alertMessagePopUpBox.addAction(okButton)
+        self.present(alertMessagePopUpBox, animated: true)
+    }
+    
     func goToSignIn() {
         if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? SignInVC {
             let user = User(
                 name: nameTextField.text ?? "",
                 email: emailTextField.text ?? "",
+                password: enterPasswordTextField.text ?? "",
                 gender: Gender(rawValue: genderLabel.text ?? "") ?? .female
             )
             signInVC.user = user
@@ -62,3 +121,5 @@ private extension SignUpVC {
         }
     }
 }
+
+

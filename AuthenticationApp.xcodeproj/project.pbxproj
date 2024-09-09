@@ -76,9 +76,9 @@
 		890621792C8C6EA300FC37D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				890488162C87225F00C77E43 /* ProfileVC.swift */,
-				890488142C87224200C77E43 /* SignInVC.swift */,
 				890488042C871E5400C77E43 /* SignUpVC.swift */,
+				890488142C87224200C77E43 /* SignInVC.swift */,
+				890488162C87225F00C77E43 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
