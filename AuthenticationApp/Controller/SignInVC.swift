@@ -30,12 +30,21 @@ class SignInVC: UIViewController {
 
 private extension SignInVC {
     func setupUI() {
+        setupLabels()
+        setupTextFields()
+        signInButtonTapped.setTitle("Sign In", for: .normal)
+    }
+    
+    func setupLabels() {
         titleLabel.text = "Sign In"
         emailLabel.text = "Email"
-        emailTextField.placeholder = "Enter your email"
         enterPasswordLabel.text = "Password"
+    }
+    
+    func setupTextFields() {
+        emailTextField.placeholder = "Enter your email"
         enterPasswordTextField.placeholder = "Enter your password"
-        signInButtonTapped.setTitle("Sign In", for: .normal)
+        enterPasswordTextField.isSecureTextEntry = true
     }
     
     func isValidUserData() -> Bool {
