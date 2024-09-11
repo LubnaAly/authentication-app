@@ -16,12 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7C-wS-SbG">
-                                <rect key="frame" x="166" y="103" width="61.333333333333343" height="28.666666666666657"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="zwQ-eY-03K">
                                 <rect key="frame" x="20" y="164.66666666666669" width="353" height="522.66666666666652"/>
                                 <subviews>
@@ -133,15 +127,12 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zwQ-eY-03K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5Zn-YF-bbd"/>
-                            <constraint firstItem="y7C-wS-SbG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OR8-yl-3jC"/>
                             <constraint firstItem="zwQ-eY-03K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UQV-Jz-hCQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zwQ-eY-03K" secondAttribute="trailing" constant="20" id="eIv-Jm-nf1"/>
-                            <constraint firstItem="y7C-wS-SbG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s5O-0S-lR9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DU1-KP-hhT"/>
                     <connections>
-                        <outlet property="UsergenderLabel" destination="e5y-B9-8UZ" id="VZL-t6-Tc9"/>
                         <outlet property="confirmPasswordLabel" destination="cNP-io-3sG" id="hbw-mh-k8S"/>
                         <outlet property="confirmPasswordTextField" destination="ju5-On-9xd" id="7D5-Mk-veU"/>
                         <outlet property="emailLabel" destination="O7l-Ua-PcX" id="tUS-uU-h5D"/>
@@ -152,7 +143,7 @@
                         <outlet property="nameLabel" destination="1WP-kN-ext" id="86X-As-7Zj"/>
                         <outlet property="nameTextField" destination="ZuG-3p-grd" id="pQM-1b-x61"/>
                         <outlet property="signInButtonTapped" destination="HKr-XC-b3Y" id="AeQ-El-d8u"/>
-                        <outlet property="titleLabel" destination="y7C-wS-SbG" id="mxS-Tb-TOP"/>
+                        <outlet property="userGenderLabel" destination="e5y-B9-8UZ" id="PMl-g7-NTk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -167,12 +158,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k11-Q4-nRj">
-                                <rect key="frame" x="166" y="58.999999999999993" width="61.333333333333343" height="28.666666666666664"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="f8t-0P-lkk">
                                 <rect key="frame" x="20" y="296.66666666666669" width="353" height="259.00000000000006"/>
                                 <subviews>
@@ -228,9 +213,7 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="f8t-0P-lkk" firstAttribute="leading" secondItem="aTI-WA-P9I" secondAttribute="leading" constant="20" id="Aoi-56-8eX"/>
-                            <constraint firstItem="k11-Q4-nRj" firstAttribute="top" secondItem="aTI-WA-P9I" secondAttribute="top" id="C6i-Xs-pqz"/>
                             <constraint firstItem="f8t-0P-lkk" firstAttribute="centerY" secondItem="nZr-9E-pFj" secondAttribute="centerY" id="CJG-7C-ddS"/>
-                            <constraint firstItem="k11-Q4-nRj" firstAttribute="centerX" secondItem="nZr-9E-pFj" secondAttribute="centerX" id="hR7-jC-jKB"/>
                             <constraint firstItem="aTI-WA-P9I" firstAttribute="trailing" secondItem="f8t-0P-lkk" secondAttribute="trailing" constant="20" id="ozI-hl-Paz"/>
                         </constraints>
                     </view>
@@ -240,7 +223,6 @@
                         <outlet property="enterPasswordLabel" destination="OgZ-Oi-L2V" id="eqf-xO-1vu"/>
                         <outlet property="enterPasswordTextField" destination="tj7-Zl-7Md" id="WSR-Nb-Xmv"/>
                         <outlet property="signInButtonTapped" destination="4hw-c2-fqq" id="vHK-7R-ApE"/>
-                        <outlet property="titleLabel" destination="k11-Q4-nRj" id="oKw-ty-a8x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFO-q5-9dE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -255,12 +237,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dov-Bn-EwP">
-                                <rect key="frame" x="166" y="58.999999999999993" width="61.333333333333343" height="28.666666666666664"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="7mc-vh-ayb">
                                 <rect key="frame" x="20" y="359.66666666666669" width="353" height="133"/>
                                 <subviews>
@@ -326,10 +302,8 @@
                         <viewLayoutGuide key="safeArea" id="Ui5-Ih-3nD"/>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dov-Bn-EwP" firstAttribute="centerX" secondItem="v0G-kv-igS" secondAttribute="centerX" id="BbC-NG-gtJ"/>
                             <constraint firstItem="7mc-vh-ayb" firstAttribute="centerY" secondItem="v0G-kv-igS" secondAttribute="centerY" id="MPj-h9-oAg"/>
                             <constraint firstItem="7mc-vh-ayb" firstAttribute="leading" secondItem="Ui5-Ih-3nD" secondAttribute="leading" constant="20" id="QFx-Pv-uKa"/>
-                            <constraint firstItem="dov-Bn-EwP" firstAttribute="top" secondItem="Ui5-Ih-3nD" secondAttribute="top" id="f9j-HA-WLQ"/>
                             <constraint firstItem="Ui5-Ih-3nD" firstAttribute="trailing" secondItem="7mc-vh-ayb" secondAttribute="trailing" constant="20" id="fo0-q6-kvw"/>
                         </constraints>
                     </view>
@@ -340,7 +314,6 @@
                         <outlet property="emailLabel" destination="Saz-J8-rHR" id="tnJ-qU-CXZ"/>
                         <outlet property="genderLabel" destination="J8e-vU-EQF" id="GxN-QV-2wq"/>
                         <outlet property="nameLabel" destination="rLs-3q-EvG" id="zSh-8s-RVe"/>
-                        <outlet property="titleLabel" destination="dov-Bn-EwP" id="DWG-mM-vUd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zs8-wH-jTU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

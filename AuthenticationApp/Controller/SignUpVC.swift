@@ -8,7 +8,6 @@
 import UIKit
 
 class SignUpVC: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -17,7 +16,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var UsergenderLabel: UILabel!
+    @IBOutlet weak var userGenderLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var signInButtonTapped: UIButton!
     
@@ -38,18 +37,23 @@ class SignUpVC: UIViewController {
 
 private extension SignUpVC {
     func setupUI() {
+        setupTitle()
         setupLabels()
         setupTextFields()
         signInButtonTapped.setTitle("Sign Up", for: .normal)
     }
     
+    func setupTitle() {
+        title = "Sign Up"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     func setupLabels() {
-        titleLabel.text = "Sign Up"
         nameLabel.text = "Name"
         emailLabel.text = "Email"
         enterPasswordLabel.text = "Enter Password"
         confirmPasswordLabel.text = "Confirm Password"
-        UsergenderLabel.text = "Gender"
+        userGenderLabel.text = "Gender"
     }
     
     func setupTextFields() {

@@ -8,7 +8,6 @@
 import UIKit
 
 class SignInVC: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var enterPasswordLabel: UILabel!
@@ -30,13 +29,13 @@ class SignInVC: UIViewController {
 
 private extension SignInVC {
     func setupUI() {
+        title = "Sign In"
         setupLabels()
         setupTextFields()
         signInButtonTapped.setTitle("Sign In", for: .normal)
     }
     
     func setupLabels() {
-        titleLabel.text = "Sign In"
         emailLabel.text = "Email"
         enterPasswordLabel.text = "Password"
     }

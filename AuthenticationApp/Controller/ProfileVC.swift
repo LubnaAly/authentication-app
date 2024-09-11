@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
@@ -27,7 +26,7 @@ class ProfileVC: UIViewController {
 
 extension ProfileVC {
     func setupUI() {
-        titleLabel.text = "Profile"
+        title = "Profile"
         UserNameLabel.text = "Name"
         UserEmailLabel.text = "Email"
         UserGenderLabel.text = "Gender"
