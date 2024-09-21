@@ -116,16 +116,16 @@ private extension SignUpVC {
         return passwordPredicate.evaluate(with: password)
     }
     
-    func goToSignIn() {
-        if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? SignInVC {
+    func goToLogin() {
+        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
             let user = User(
                 name: nameTextField.text ?? "",
                 email: emailTextField.text ?? "",
                 password: enterPasswordTextField.text ?? "",
                 gender: Gender(rawValue: genderLabel.text ?? "") ?? .female
             )
-            signInVC.user = user
-            navigationController?.pushViewController(signInVC, animated: true)
+            loginVC.user = user
+            navigationController?.pushViewController(loginVC, animated: true)
         }
     }
 }
