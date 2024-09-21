@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignInVC: UIViewController {
+class LoginVC: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var enterPasswordLabel: UILabel!
@@ -22,17 +22,17 @@ class SignInVC: UIViewController {
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {
-        guard isValidUserData() else { return }
+//        guard isValidUserData() else { return }
         goToProfile()
     }
 }
 
-private extension SignInVC {
+private extension LoginVC {
     func setupUI() {
-        title = "Sign In"
+        title = "Login"
         setupLabels()
         setupTextFields()
-        signInButtonTapped.setTitle("Sign In", for: .normal)
+        signInButtonTapped.setTitle("Login", for: .normal)
     }
     
     func setupLabels() {

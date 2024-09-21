@@ -30,7 +30,7 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        guard isValidUserData() else { return }
+//        guard isValidUserData() else { return }
         goToSignIn()
     }
 }
@@ -117,7 +117,7 @@ private extension SignUpVC {
     }
     
     func goToSignIn() {
-        if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? SignInVC {
+        if let signInVC = storyboard?.instantiateViewController(identifier: "SignInVC") as? LoginVC {
             let user = User(
                 name: nameTextField.text ?? "",
                 email: emailTextField.text ?? "",
