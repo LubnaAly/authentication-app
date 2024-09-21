@@ -1,5 +1,5 @@
 //
-//  SignInVC.swift
+//  LoginVC.swift
 //  AuthenticationApp
 //
 //  Created by Lubna Ali on 03/09/2024.
@@ -12,7 +12,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var enterPasswordLabel: UILabel!
     @IBOutlet weak var enterPasswordTextField: UITextField!
-    @IBOutlet weak var signInButtonTapped: UIButton!
+    @IBOutlet weak var loginButtonTapped: UIButton!
     
     var user: User?
     
@@ -21,8 +21,8 @@ class LoginVC: UIViewController {
         setupUI()
     }
     
-    @IBAction func signInButtonTapped(_ sender: Any) {
-//        guard isValidUserData() else { return }
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard isValidUserData() else { return }
         goToProfile()
     }
 }
@@ -32,7 +32,7 @@ private extension LoginVC {
         title = "Login"
         setupLabels()
         setupTextFields()
-        signInButtonTapped.setTitle("Login", for: .normal)
+        loginButtonTapped.setTitle("Login", for: .normal)
     }
     
     func setupLabels() {

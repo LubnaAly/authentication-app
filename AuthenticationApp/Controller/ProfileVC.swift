@@ -15,8 +15,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var UserEmailLabel: UILabel!
     @IBOutlet weak var UserGenderLabel: UILabel!
     @IBOutlet weak var logOutButtonTapped: UIButton!
-
-
+    
     var user: User?
     
     override func viewDidLoad() {
@@ -24,11 +23,9 @@ class ProfileVC: UIViewController {
         setupUI()
         setUserData()
     }
-        
+    
     @IBAction func logOutButtonTapped(_ sender: Any) {
-        if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") as? SignUpVC {
-            navigationController?.popToRootViewController(animated: true)
-        }
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
