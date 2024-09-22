@@ -18,7 +18,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var userGenderLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var signInButtonTapped: UIButton!
+    @IBOutlet weak var loginButtonTapped: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
-        goToSignIn()
+        goToLogin()
     }
 }
 
@@ -40,7 +40,7 @@ private extension SignUpVC {
         setupTitle()
         setupLabels()
         setupTextFields()
-        signInButtonTapped.setTitle("Sign Up", for: .normal)
+        loginButtonTapped.setTitle("Sign Up", for: .normal)
     }
     
     func setupTitle() {
