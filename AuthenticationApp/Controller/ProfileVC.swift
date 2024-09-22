@@ -36,6 +36,7 @@ extension ProfileVC {
         UserEmailLabel.text = "Email"
         UserGenderLabel.text = "Gender"
         logOutButtonTapped.setTitle("Log out", for: .normal)
+        navigationItem.setHidesBackButton(true, animated: true)
     }
     
     func setUserData() {

@@ -22,7 +22,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        guard isValidUserData() else { return }
+//        guard isValidUserData() else { return }
         goToProfile()
     }
 }
@@ -33,6 +33,7 @@ private extension LoginVC {
         setupLabels()
         setupTextFields()
         loginButtonTapped.setTitle("Login", for: .normal)
+        navigationItem.setHidesBackButton(true, animated: true)
     }
     
     func setupLabels() {

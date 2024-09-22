@@ -140,9 +140,9 @@
                         <outlet property="enterPasswordLabel" destination="Ode-wB-LVV" id="OxG-iC-kmX"/>
                         <outlet property="enterPasswordTextField" destination="nay-9w-Yxa" id="ahs-7B-zqr"/>
                         <outlet property="genderLabel" destination="hbh-eV-De1" id="Ejg-Fv-jAL"/>
+                        <outlet property="loginButtonTapped" destination="HKr-XC-b3Y" id="AeQ-El-d8u"/>
                         <outlet property="nameLabel" destination="1WP-kN-ext" id="86X-As-7Zj"/>
                         <outlet property="nameTextField" destination="ZuG-3p-grd" id="pQM-1b-x61"/>
-                        <outlet property="signInButtonTapped" destination="HKr-XC-b3Y" id="AeQ-El-d8u"/>
                         <outlet property="userGenderLabel" destination="e5y-B9-8UZ" id="PMl-g7-NTk"/>
                     </connections>
                 </viewController>
@@ -203,7 +203,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                         <connections>
-                                            <action selector="signInButtonTapped:" destination="BRW-vA-FgD" eventType="touchUpInside" id="eXl-5O-Y7y"/>
+                                            <action selector="loginButtonTapped:" destination="BRW-vA-FgD" eventType="touchUpInside" id="D1n-Ub-6Mr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -222,7 +222,7 @@
                         <outlet property="emailTextField" destination="4hm-Rw-j44" id="V8Y-HJ-oeh"/>
                         <outlet property="enterPasswordLabel" destination="OgZ-Oi-L2V" id="eqf-xO-1vu"/>
                         <outlet property="enterPasswordTextField" destination="tj7-Zl-7Md" id="WSR-Nb-Xmv"/>
-                        <outlet property="signInButtonTapped" destination="4hw-c2-fqq" id="vHK-7R-ApE"/>
+                        <outlet property="loginButtonTapped" destination="4hw-c2-fqq" id="1f1-Dj-Uv9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFO-q5-9dE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -305,7 +305,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="logOutButtonTapped:" destination="XbZ-TV-3eq" eventType="touchUpInside" id="QI7-GK-0LA"/>
-                                    <action selector="signInButtonTapped:" destination="BRW-vA-FgD" eventType="touchUpInside" id="Viq-aQ-Me5"/>
                                 </connections>
                             </button>
                         </subviews>
