@@ -137,7 +137,7 @@ private extension SignUpVC {
     
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
-            navigationController?.pushViewController(loginVC, animated: true)
+            navigationController?.setViewControllers([loginVC], animated: true)
         }
     }
 }
