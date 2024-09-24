@@ -73,7 +73,7 @@ private extension LoginVC {
     func goToProfile() {
         if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as? ProfileVC {
             profileVC.user = user
-            navigationController?.pushViewController(profileVC, animated: true)
+            navigationController?.setViewControllers([profileVC], animated: true)
         }
     }
 }

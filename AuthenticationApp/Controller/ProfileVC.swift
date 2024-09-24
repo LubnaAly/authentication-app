@@ -25,7 +25,7 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
+        goToSignUp()
     }
 }
 
@@ -42,5 +42,11 @@ extension ProfileVC {
         nameLabel.text = user?.name
         emailLabel.text = user?.email
         genderLabel.text = user?.gender.rawValue
+    }
+    
+    func goToSignUp() {
+        if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
+            navigationController?.setViewControllers([signUpVC], animated: true)
+        }
     }
 }
