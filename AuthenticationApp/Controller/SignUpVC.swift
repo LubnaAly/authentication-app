@@ -31,6 +31,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
+        saveUserData()
         goToLogin()
     }
 }
@@ -116,15 +117,15 @@ private extension SignUpVC {
         return passwordPredicate.evaluate(with: password)
     }
     
+    func saveUserData() {
+        UserDefaults.standard.set(nameTextField.text, forKey: "name")
+        UserDefaults.standard.set(emailTextField.text, forKey: "email")
+        UserDefaults.standard.set(enterPasswordTextField.text, forKey: "password")
+        UserDefaults.standard.set(genderLabel.text, forKey: "gender")
+    }
+    
     func goToLogin() {
-        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
-            let user = User(
-                name: nameTextField.text ?? "",
-                email: emailTextField.text ?? "",
-                password: enterPasswordTextField.text ?? "",
-                gender: Gender(rawValue: genderLabel.text ?? "") ?? .female
-            )
-            loginVC.user = user
+        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.pushViewController(loginVC, animated: true)
         }
     }
