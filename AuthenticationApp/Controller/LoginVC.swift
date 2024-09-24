@@ -14,8 +14,6 @@ class LoginVC: UIViewController {
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var loginButtonTapped: UIButton!
     
-    var user: User?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -52,7 +50,8 @@ private extension LoginVC {
             return false
         }
         
-        guard emailTextField.text == user?.email else {
+        let userEmail = UserDefaults.standard.string(forKey: "email")
+        guard email == userEmail else {
             showAlertMessage(title: "Alert", message: "Please enter a registered Email!")
             return false
         }
@@ -62,7 +61,8 @@ private extension LoginVC {
             return false
         }
         
-        guard enterPasswordTextField.text == user?.password else {
+        let userPassword = UserDefaults.standard.string(forKey: "password")
+        guard password == userPassword else {
             showAlertMessage(title: "Alert", message: "Please enter the correct Password!")
             return false
         }
@@ -71,8 +71,7 @@ private extension LoginVC {
     }
     
     func goToProfile() {
-        if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as? ProfileVC {
-            profileVC.user = user
+        if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") {
             navigationController?.setViewControllers([profileVC], animated: true)
         }
     }

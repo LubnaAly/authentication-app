@@ -15,9 +15,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var UserEmailLabel: UILabel!
     @IBOutlet weak var UserGenderLabel: UILabel!
     @IBOutlet weak var logOutButtonTapped: UIButton!
-    
-    var user: User?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -39,9 +37,9 @@ extension ProfileVC {
     }
     
     func setUserData() {
-        nameLabel.text = user?.name
-        emailLabel.text = user?.email
-        genderLabel.text = user?.gender.rawValue
+        nameLabel.text = UserDefaults.standard.string(forKey: "name")
+        emailLabel.text = UserDefaults.standard.string(forKey: "email")
+        genderLabel.text = UserDefaults.standard.string(forKey: "gender")
     }
     
     func goToSignUp() {
