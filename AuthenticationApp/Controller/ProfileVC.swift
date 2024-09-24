@@ -14,7 +14,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var UserEmailLabel: UILabel!
     @IBOutlet weak var UserGenderLabel: UILabel!
-    @IBOutlet weak var logOutButtonTapped: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
-        goToSignUp()
+        goToLogin()
     }
 }
 
@@ -33,7 +33,7 @@ extension ProfileVC {
         UserNameLabel.text = "Name"
         UserEmailLabel.text = "Email"
         UserGenderLabel.text = "Gender"
-        logOutButtonTapped.setTitle("Log out", for: .normal)
+        logOutButton.setTitle("Log out", for: .normal)
     }
     
     func setUserData() {
@@ -42,9 +42,9 @@ extension ProfileVC {
         genderLabel.text = UserDefaults.standard.string(forKey: "gender")
     }
     
-    func goToSignUp() {
-        if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
-            navigationController?.setViewControllers([signUpVC], animated: true)
+    func goToLogin() {
+        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
+            navigationController?.setViewControllers([loginVC], animated: true)
         }
     }
 }
