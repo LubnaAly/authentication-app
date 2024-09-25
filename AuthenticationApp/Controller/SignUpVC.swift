@@ -18,7 +18,9 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var userGenderLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var loginButtonTapped: UIButton!
+    @IBOutlet weak var loginHintLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,10 @@ class SignUpVC: UIViewController {
         saveUserData()
         goToLogin()
     }
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        goToLogin()
+    }
 }
 
 private extension SignUpVC {
@@ -41,12 +47,11 @@ private extension SignUpVC {
         setupTitle()
         setupLabels()
         setupTextFields()
-        loginButtonTapped.setTitle("Sign Up", for: .normal)
+        setupButtons()
     }
     
     func setupTitle() {
         title = "Sign Up"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupLabels() {
@@ -55,6 +60,7 @@ private extension SignUpVC {
         enterPasswordLabel.text = "Enter Password"
         confirmPasswordLabel.text = "Confirm Password"
         userGenderLabel.text = "Gender"
+        loginHintLabel.text = "Already have an account?"
     }
     
     func setupTextFields() {
@@ -65,6 +71,11 @@ private extension SignUpVC {
         enterPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
     }
+    
+    func setupButtons() {
+         signUpButton.setTitle("Sign Up", for: .normal)
+         loginButton.setTitle("Login", for: .normal)
+     }
     
     func isValidUserData() -> Bool {
         guard let name = nameTextField.text, !name.isEmpty else {
@@ -126,7 +137,7 @@ private extension SignUpVC {
     
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
-            navigationController?.pushViewController(loginVC, animated: true)
+            navigationController?.setViewControllers([loginVC], animated: true)
         }
     }
 }

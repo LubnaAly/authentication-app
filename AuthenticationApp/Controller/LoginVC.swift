@@ -13,7 +13,9 @@ class LoginVC: UIViewController {
     @IBOutlet weak var enterPasswordLabel: UILabel!
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBOutlet weak var loginButtonTapped: UIButton!
-    
+    @IBOutlet weak var signUpHintLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -23,25 +25,40 @@ class LoginVC: UIViewController {
         guard isValidUserData() else { return }
         goToProfile()
     }
+    
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        goToSignUp()
+    }
 }
 
 private extension LoginVC {
     func setupUI() {
-        title = "Login"
+        setupTitle()
         setupLabels()
         setupTextFields()
-        loginButtonTapped.setTitle("Login", for: .normal)
+        setupButtons()
+    }
+    
+    func setupTitle() {
+        title = "Login"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupLabels() {
         emailLabel.text = "Email"
         enterPasswordLabel.text = "Password"
+        signUpHintLabel.text = "Don't have an account?"
     }
     
     func setupTextFields() {
         emailTextField.placeholder = "Enter your email"
         enterPasswordTextField.placeholder = "Enter your password"
         enterPasswordTextField.isSecureTextEntry = true
+    }
+    
+    func setupButtons() {
+        loginButtonTapped.setTitle("Login", for: .normal)
+        signUpButton.setTitle("Sign Up", for: .normal)
     }
     
     func isValidUserData() -> Bool {
@@ -73,6 +90,11 @@ private extension LoginVC {
     func goToProfile() {
         if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") {
             navigationController?.setViewControllers([profileVC], animated: true)
+        }
+    }
+    func goToSignUp() {
+        if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
+            navigationController?.setViewControllers([signUpVC], animated: true)
         }
     }
 }
