@@ -23,6 +23,7 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
         goToLogin()
     }
 }

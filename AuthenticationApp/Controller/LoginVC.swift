@@ -15,7 +15,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginButtonTapped: UIButton!
     @IBOutlet weak var signUpHintLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,6 +24,7 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -92,6 +93,7 @@ private extension LoginVC {
             navigationController?.setViewControllers([profileVC], animated: true)
         }
     }
+    
     func goToSignUp() {
         if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
             navigationController?.setViewControllers([signUpVC], animated: true)
