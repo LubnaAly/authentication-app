@@ -22,10 +22,16 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var loginHintLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    var imagePicker = UIImagePickerController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    @IBAction func ImagePickerButtonTapped() {
+        presentImagePicker()
     }
     
     @IBAction func genderSwitchToggled(_ genderSwitch: UISwitch) {
@@ -74,9 +80,9 @@ private extension SignUpVC {
     }
     
     func setupButtons() {
-         signUpButton.setTitle("Sign Up", for: .normal)
-         loginButton.setTitle("Login", for: .normal)
-     }
+        signUpButton.setTitle("Sign Up", for: .normal)
+        loginButton.setTitle("Login", for: .normal)
+    }
     
     func isValidUserData() -> Bool {
         guard let name = nameTextField.text, !name.isEmpty else {
@@ -146,5 +152,25 @@ private extension SignUpVC {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
+    }
+}
+
+extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func presentImagePicker() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        profileImageView.image = image
     }
 }
