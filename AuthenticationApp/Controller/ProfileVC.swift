@@ -39,11 +39,17 @@ extension ProfileVC {
     }
     
     func setUserData() {
+        setProfileImage()
         nameLabel.text = UserDefaults.standard.string(forKey: "name")
         emailLabel.text = UserDefaults.standard.string(forKey: "email")
         genderLabel.text = UserDefaults.standard.string(forKey: "gender")
     }
     
+    func setProfileImage() {
+        guard let data = UserDefaults.standard.data(forKey: "profileImage") else { return }
+        profileImageView.image = UIImage(data: data)
+    }
+
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)

@@ -130,10 +130,16 @@ private extension SignUpVC {
     }
     
     func saveUserData() {
+        saveImage()
         UserDefaults.standard.set(nameTextField.text, forKey: "name")
         UserDefaults.standard.set(emailTextField.text, forKey: "email")
         UserDefaults.standard.set(enterPasswordTextField.text, forKey: "password")
         UserDefaults.standard.set(genderLabel.text, forKey: "gender")
+    }
+    
+    func saveImage() {
+        guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+        UserDefaults.standard.set(data, forKey: "profileImage")
     }
     
     func goToLogin() {
