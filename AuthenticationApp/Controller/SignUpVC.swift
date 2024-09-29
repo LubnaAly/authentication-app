@@ -8,6 +8,7 @@
 import UIKit
 
 class SignUpVC: UIViewController {
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!

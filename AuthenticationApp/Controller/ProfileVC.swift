@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfileVC: UIViewController {
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
