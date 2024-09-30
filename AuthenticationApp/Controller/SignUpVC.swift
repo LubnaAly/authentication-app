@@ -22,7 +22,6 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var loginHintLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    var imagePicker = UIImagePickerController()
     
     
     override func viewDidLoad() {
@@ -31,7 +30,13 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func ImagePickerButtonTapped() {
-        presentImagePicker()
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @IBAction func genderSwitchToggled(_ genderSwitch: UISwitch) {
@@ -156,21 +161,12 @@ private extension SignUpVC {
 }
 
 extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func presentImagePicker() {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
-        guard let image = info[.originalImage] as? UIImage else {
+        if let image = info[.originalImage] as? UIImage {
+            profileImageView.image = image
+        } else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        profileImageView.image = image
     }
 }
