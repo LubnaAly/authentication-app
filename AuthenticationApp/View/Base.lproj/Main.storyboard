@@ -29,12 +29,25 @@
                                                     <constraint firstAttribute="width" constant="150" id="X8U-Ze-GQd"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZX-hK-m2h">
+                                                <rect key="frame" x="101.66666666666669" y="0.0" width="150" height="150"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="ImagePickerButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="cs4-hT-kXp"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Szo-0A-XIp" secondAttribute="bottom" id="9pZ-hT-fgw"/>
                                             <constraint firstItem="Szo-0A-XIp" firstAttribute="centerX" secondItem="zxv-YW-bIF" secondAttribute="centerX" id="N88-dY-QRr"/>
                                             <constraint firstItem="Szo-0A-XIp" firstAttribute="top" secondItem="zxv-YW-bIF" secondAttribute="top" id="X7o-gj-SM8"/>
+                                            <constraint firstItem="LZX-hK-m2h" firstAttribute="height" secondItem="Szo-0A-XIp" secondAttribute="height" id="aoo-T3-JnX"/>
+                                            <constraint firstItem="LZX-hK-m2h" firstAttribute="centerX" secondItem="Szo-0A-XIp" secondAttribute="centerX" id="hcD-Y1-SEK"/>
+                                            <constraint firstItem="LZX-hK-m2h" firstAttribute="width" secondItem="Szo-0A-XIp" secondAttribute="width" id="mMA-9y-rqx"/>
+                                            <constraint firstItem="LZX-hK-m2h" firstAttribute="centerY" secondItem="Szo-0A-XIp" secondAttribute="centerY" id="nEE-hd-tT7"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="UQh-oQ-Qae">
