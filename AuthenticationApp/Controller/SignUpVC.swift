@@ -8,6 +8,7 @@
 import UIKit
 
 class SignUpVC: UIViewController {
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -25,6 +26,10 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    @IBAction func ImagePickerButtonTapped() {
+        presentImagePicker()
     }
     
     @IBAction func genderSwitchToggled(_ genderSwitch: UISwitch) {
@@ -73,9 +78,9 @@ private extension SignUpVC {
     }
     
     func setupButtons() {
-         signUpButton.setTitle("Sign Up", for: .normal)
-         loginButton.setTitle("Login", for: .normal)
-     }
+        signUpButton.setTitle("Sign Up", for: .normal)
+        loginButton.setTitle("Login", for: .normal)
+    }
     
     func isValidUserData() -> Bool {
         guard let name = nameTextField.text, !name.isEmpty else {
@@ -129,15 +134,36 @@ private extension SignUpVC {
     }
     
     func saveUserData() {
+        saveImage()
         UserDefaults.standard.set(nameTextField.text, forKey: "name")
         UserDefaults.standard.set(emailTextField.text, forKey: "email")
         UserDefaults.standard.set(enterPasswordTextField.text, forKey: "password")
         UserDefaults.standard.set(genderLabel.text, forKey: "gender")
     }
     
+    func presentImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
+    func saveImage() {
+        guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+        UserDefaults.standard.set(data, forKey: "profileImage")
+    }
+    
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
+    }
+}
+
+extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            profileImageView.image = image
+        }
+        dismiss(animated: true)
     }
 }
