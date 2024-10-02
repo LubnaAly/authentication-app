@@ -37,7 +37,7 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        guard isValidUserData() else { return }
+                guard isValidUserData() else { return }
         saveUserData()
         goToLogin()
     }

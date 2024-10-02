@@ -18,3 +18,8 @@ enum Gender: String {
     case female = "Female"
     case male = "Male"
 }
+
+struct UserData {
+    let title: String
+    var value: String?
+}

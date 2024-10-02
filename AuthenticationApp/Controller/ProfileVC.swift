@@ -9,18 +9,21 @@ import UIKit
 
 class ProfileVC: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var UserNameLabel: UILabel!
-    @IBOutlet weak var UserEmailLabel: UILabel!
-    @IBOutlet weak var UserGenderLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var logOutButton: UIButton!
-
+    
+    let usersData: [UserData] = [
+        .init(title: "Name", value: UserDefaults.standard.string(forKey: "name")),
+        .init(title: "Email", value: UserDefaults.standard.string(forKey: "email")),
+        .init(title: "Gender", value: UserDefaults.standard.string(forKey: "gender")),
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setUserData()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @IBAction func logOutButtonTapped(_ sender: Any) {
@@ -32,27 +35,43 @@ class ProfileVC: UIViewController {
 extension ProfileVC {
     func setupUI() {
         title = "Profile"
-        UserNameLabel.text = "Name"
-        UserEmailLabel.text = "Email"
-        UserGenderLabel.text = "Gender"
         logOutButton.setTitle("Log out", for: .normal)
     }
     
     func setUserData() {
         setProfileImage()
-        nameLabel.text = UserDefaults.standard.string(forKey: "name")
-        emailLabel.text = UserDefaults.standard.string(forKey: "email")
-        genderLabel.text = UserDefaults.standard.string(forKey: "gender")
+        UserDefaults.standard.string(forKey: "name")
+        UserDefaults.standard.string(forKey: "email")
+        UserDefaults.standard.string(forKey: "gender")
     }
     
     func setProfileImage() {
         guard let data = UserDefaults.standard.data(forKey: "profileImage") else { return }
         profileImageView.image = UIImage(data: data)
     }
-
+    
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
+    }
+}
+
+extension ProfileVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        usersData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = usersData[indexPath.row].title
+        cell.detailTextLabel?.text = usersData[indexPath.row].value
+        return cell
+    }
+}
+
+extension ProfileVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }
