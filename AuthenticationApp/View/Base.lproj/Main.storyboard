@@ -356,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="7mc-vh-ayb">
-                                <rect key="frame" x="20" y="171.99999999999997" width="353" height="508.33333333333326"/>
+                                <rect key="frame" x="20" y="176.99999999999997" width="353" height="498.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OI-i7-Szw">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="150"/>
@@ -376,16 +376,16 @@
                                             <constraint firstItem="XvA-D6-P96" firstAttribute="top" secondItem="2OI-i7-Szw" secondAttribute="top" id="pr9-P4-eEw"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1hn-rt-FAL">
-                                        <rect key="frame" x="0.0" y="210" width="353" height="200"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1hn-rt-FAL">
+                                        <rect key="frame" x="0.0" y="210" width="353" height="190"/>
                                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="aeq-Bx-sCZ"/>
+                                            <constraint firstAttribute="height" constant="190" id="aeq-Bx-sCZ"/>
                                         </constraints>
                                         <color key="sectionIndexBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGL-o6-JM1">
-                                        <rect key="frame" x="0.0" y="470" width="353" height="38.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="460" width="353" height="38.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                         <connections>
