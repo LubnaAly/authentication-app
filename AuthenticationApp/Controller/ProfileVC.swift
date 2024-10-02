@@ -40,9 +40,6 @@ extension ProfileVC {
     
     func setUserData() {
         setProfileImage()
-        UserDefaults.standard.string(forKey: "name")
-        UserDefaults.standard.string(forKey: "email")
-        UserDefaults.standard.string(forKey: "gender")
     }
     
     func setProfileImage() {
@@ -75,3 +72,4 @@ extension ProfileVC: UITableViewDelegate {
         print(indexPath)
     }
 }
+
