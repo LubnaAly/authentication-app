@@ -26,6 +26,7 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addObservers()
     }
     
     @IBAction func ImagePickerButtonTapped() {
@@ -80,6 +81,21 @@ private extension SignUpVC {
     func setupButtons() {
         signUpButton.setTitle("Sign Up", for: .normal)
         loginButton.setTitle("Login", for: .normal)
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     func isValidUserData() -> Bool {
@@ -156,6 +172,18 @@ private extension SignUpVC {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide() {
+        view.frame.origin.y = 0
     }
 }
 
