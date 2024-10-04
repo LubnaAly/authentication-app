@@ -27,7 +27,7 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         addObservers()
-        addGestureRecognizer()
+        hideKeyboardWhenTappedAround()
     }
     
     @IBAction func ImagePickerButtonTapped() {
@@ -97,11 +97,6 @@ private extension SignUpVC {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
-    }
-    
-    func addGestureRecognizer() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
     }
     
     func isValidUserData() -> Bool {
@@ -193,8 +188,10 @@ private extension SignUpVC {
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.dismissKeyboard))
-        tap.cancelsTouchesInView = false
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(SignUpVC.dismissKeyboard)
+        )
         view.addGestureRecognizer(tap)
     }
     

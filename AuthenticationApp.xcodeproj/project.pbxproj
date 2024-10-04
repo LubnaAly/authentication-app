@@ -72,8 +72,7 @@
 				8906217A2C8C6EB100FC37D0 /* Model */,
 				8906217B2C8C6EBF00FC37D0 /* View */,
 				890621792C8C6EA300FC37D0 /* Controller */,
-				890488092C871E5600C77E43 /* Assets.xcassets */,
-				8904880E2C871E5600C77E43 /* Info.plist */,
+				892572F42CAEADA800998A6E /* Resources */,
 			);
 			path = AuthenticationApp;
 			sourceTree = "<group>";
@@ -112,6 +111,15 @@
 				8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		892572F42CAEADA800998A6E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				890488092C871E5600C77E43 /* Assets.xcassets */,
+				8904880E2C871E5600C77E43 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,7 +354,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MNTB6SJY8K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AuthenticationApp/Info.plist;
+				INFOPLIST_FILE = AuthenticationApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Authentication;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -376,7 +384,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MNTB6SJY8K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AuthenticationApp/Info.plist;
+				INFOPLIST_FILE = AuthenticationApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Authentication;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
