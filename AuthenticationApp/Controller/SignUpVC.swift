@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 class SignUpVC: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -27,7 +26,6 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setKeyboard()
     }
     
     @IBAction func ImagePickerButtonTapped() {
@@ -152,11 +150,6 @@ private extension SignUpVC {
     func saveImage() {
         guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
         UserDefaults.standard.set(data, forKey: "profileImage")
-    }
-    
-    func setKeyboard() {
-        IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.enableDebugging = true
     }
     
     func goToLogin() {

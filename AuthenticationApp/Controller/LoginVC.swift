@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 class LoginVC: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
@@ -20,7 +19,6 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setKeyboard()
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -88,11 +86,6 @@ private extension LoginVC {
         }
         
         return true
-    }
-    
-    func setKeyboard() {
-        IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.enableDebugging = true
     }
     
     func goToProfile() {

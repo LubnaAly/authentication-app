@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         setRootViewController()
+        setupIQKeyboardManager()
     }
 }
 
@@ -27,5 +29,10 @@ private extension SceneDelegate {
             rootVC = storyboard.instantiateViewController(identifier: "LoginVC")
         }
         window?.rootViewController = UINavigationController(rootViewController: rootVC)
+    }
+    
+    func setupIQKeyboardManager() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
     }
 }
