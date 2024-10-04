@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class SignUpVC: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -26,8 +27,7 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addObservers()
-        hideKeyboardWhenTappedAround()
+        setKeyboard()
     }
     
     @IBAction func ImagePickerButtonTapped() {
@@ -82,21 +82,6 @@ private extension SignUpVC {
     func setupButtons() {
         signUpButton.setTitle("Sign Up", for: .normal)
         loginButton.setTitle("Login", for: .normal)
-    }
-    
-    func addObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
     }
     
     func isValidUserData() -> Bool {
@@ -169,34 +154,15 @@ private extension SignUpVC {
         UserDefaults.standard.set(data, forKey: "profileImage")
     }
     
+    func setKeyboard() {
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardManager.shared.enableDebugging = true
+    }
+    
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide() {
-        view.frame.origin.y = 0
-    }
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(
-            target: self,
-            action: #selector(SignUpVC.dismissKeyboard)
-        )
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 
