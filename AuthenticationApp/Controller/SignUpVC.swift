@@ -8,6 +8,7 @@
 import UIKit
 
 class SignUpVC: UIViewController {
+    // MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,12 +23,12 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var loginHintLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
+    // MARK: - Actions
     @IBAction func ImagePickerButtonTapped() {
         presentImagePicker()
     }
@@ -47,7 +48,9 @@ class SignUpVC: UIViewController {
     }
 }
 
+// MARK: - Extensions
 private extension SignUpVC {
+    // MARK: - Setup UI methods
     func setupUI() {
         setupTitle()
         setupLabels()
@@ -81,7 +84,7 @@ private extension SignUpVC {
         signUpButton.setTitle("Sign Up", for: .normal)
         loginButton.setTitle("Login", for: .normal)
     }
-    
+    // MARK: - Data validation methods
     func isValidUserData() -> Bool {
         guard let name = nameTextField.text, !name.isEmpty else {
             showAlertMessage(title: "Alert", message: "Please enter your Name!")
@@ -132,7 +135,7 @@ private extension SignUpVC {
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
-    
+    // MARK: - Save user data methods
     func saveUserData() {
         saveImage()
         UserDefaults.standard.set(nameTextField.text, forKey: "name")
@@ -151,7 +154,7 @@ private extension SignUpVC {
         guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
         UserDefaults.standard.set(data, forKey: "profileImage")
     }
-    
+    // MARK: - Navigate to the next ViewController
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
@@ -159,6 +162,7 @@ private extension SignUpVC {
     }
 }
 
+// MARK: - ImagePicker delegation extension
 extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {

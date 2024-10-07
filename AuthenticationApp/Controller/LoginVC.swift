@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginVC: UIViewController {
+    // MARK: - Outlets
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var enterPasswordLabel: UILabel!
@@ -15,12 +16,12 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginButtonTapped: UIButton!
     @IBOutlet weak var signUpHintLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
+    // MARK: - Actions
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
@@ -32,7 +33,9 @@ class LoginVC: UIViewController {
     }
 }
 
+// MARK: - Extensions
 private extension LoginVC {
+    // MARK: - Setup UI methods
     func setupUI() {
         setupTitle()
         setupLabels()
@@ -61,7 +64,7 @@ private extension LoginVC {
         loginButtonTapped.setTitle("Login", for: .normal)
         signUpButton.setTitle("Sign Up", for: .normal)
     }
-    
+    // MARK: - Data validation methods
     func isValidUserData() -> Bool {
         guard let email = emailTextField.text, !email.isEmpty else {
             showAlertMessage(title: "Alert", message: "Please enter your Email!")
@@ -87,13 +90,13 @@ private extension LoginVC {
         
         return true
     }
-    
+    // MARK: - Navigate to the next ViewController
     func goToProfile() {
         if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") {
             navigationController?.setViewControllers([profileVC], animated: true)
         }
     }
-    
+    // MARK: - Navigate to the previous ViewController
     func goToSignUp() {
         if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
             navigationController?.setViewControllers([signUpVC], animated: true)
