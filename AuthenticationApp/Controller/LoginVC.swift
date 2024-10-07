@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
     @IBAction private func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
-        UserDefaultsManager.shared.setIsLoggedIn(true)
+        UserDefaultsManager.shared.setLoginStatus(true)
     }
     
     @IBAction private func signUpButtonTapped(_ sender: Any) {
@@ -46,48 +46,48 @@ private extension LoginVC {
     }
     
     func setupTitle() {
-        title = "Login"
+        title = Constants.Texts.loginTitle
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupLabels() {
-        emailLabel.text = "Email"
-        enterPasswordLabel.text = "Password"
-        signUpHintLabel.text = "Don't have an account?"
+        emailLabel.text = Constants.Texts.email
+        enterPasswordLabel.text = Constants.Texts.password
+        signUpHintLabel.text = Constants.Texts.signUpHint
     }
     
     func setupTextFields() {
-        emailTextField.placeholder = "Enter your email"
-        enterPasswordTextField.placeholder = "Enter your password"
+        emailTextField.placeholder = Constants.Placeholders.email
+        enterPasswordTextField.placeholder = Constants.Placeholders.password
         enterPasswordTextField.isSecureTextEntry = true
     }
     
     func setupButtons() {
-        loginButtonTapped.setTitle("Login", for: .normal)
-        signUpButton.setTitle("Sign Up", for: .normal)
+        loginButtonTapped.setTitle(Constants.ButtonsTitles.login, for: .normal)
+        signUpButton.setTitle(Constants.ButtonsTitles.signUp, for: .normal)
     }
     
     // MARK: - Data Validation
     func isValidUserData() -> Bool {
         guard let email = emailTextField.text, !email.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Email!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyEmailMessage)
             return false
         }
         
         let userEmail = UserDefaultsManager.shared.getEmail()
         guard email == userEmail else {
-            showAlertMessage(title: "Alert", message: "Please enter a registered Email!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.registeredEmailMessage)
             return false
         }
         
         guard let password = enterPasswordTextField.text, !password.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Password!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyPasswordMessage)
             return false
         }
         
         let userPassword = UserDefaultsManager.shared.getPassword()
         guard password == userPassword else {
-            showAlertMessage(title: "Alert", message: "Please enter the correct Password!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.correctPasswordMessage)
             return false
         }
         
@@ -96,13 +96,13 @@ private extension LoginVC {
     
     // MARK: - Navigation
     func goToProfile() {
-        if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") {
+        if let profileVC = storyboard?.instantiateViewController(identifier: Constants.Screens.profile) {
             navigationController?.setViewControllers([profileVC], animated: true)
         }
     }
     
     func goToSignUp() {
-        if let signUpVC = storyboard?.instantiateViewController(identifier: "SignUpVC") {
+        if let signUpVC = storyboard?.instantiateViewController(identifier: Constants.Screens.signUp) {
             navigationController?.setViewControllers([signUpVC], animated: true)
         }
     }

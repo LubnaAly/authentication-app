@@ -19,7 +19,8 @@
 		8906217E2C8F207F00FC37D0 /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */; };
 		892573032CB0510200998A6E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 892573022CB0510200998A6E /* IQKeyboardManagerSwift */; };
 		892573062CB0587200998A6E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 892573052CB0587200998A6E /* IQKeyboardManagerSwift */; };
-		892573332CB3DE3300998A6E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573322CB3DE1700998A6E /* UserDefaultsManager.swift */; };
+		892573392CB40FB900998A6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573382CB40FB900998A6E /* Constants.swift */; };
+		892573862CB4260500998A6E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573842CB4260500998A6E /* UserDefaultsManager.swift */; };
 		895FEADC2CAD3C4E0063A08C /* ProfileCellUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,8 @@
 		890488162C87225F00C77E43 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		890621772C8C6B6500FC37D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
-		892573322CB3DE1700998A6E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		892573382CB40FB900998A6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		892573842CB4260500998A6E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellUIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				890488002C871E5400C77E43 /* AppDelegate.swift */,
 				890488022C871E5400C77E43 /* SceneDelegate.swift */,
 				8906217C2C8F205900FC37D0 /* Extentions */,
+				892573852CB4260500998A6E /* Utilities */,
 				8906217A2C8C6EB100FC37D0 /* Model */,
 				8906217B2C8C6EBF00FC37D0 /* View */,
 				890621792C8C6EA300FC37D0 /* Controller */,
@@ -97,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */,
-				892573322CB3DE1700998A6E /* UserDefaultsManager.swift */,
 				890621772C8C6B6500FC37D0 /* User.swift */,
 			);
 			path = Model;
@@ -123,10 +125,19 @@
 		892572F42CAEADA800998A6E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				892573382CB40FB900998A6E /* Constants.swift */,
 				890488092C871E5600C77E43 /* Assets.xcassets */,
 				8904880E2C871E5600C77E43 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		892573852CB4260500998A6E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				892573842CB4260500998A6E /* UserDefaultsManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,12 +214,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				892573392CB40FB900998A6E /* Constants.swift in Sources */,
 				890488172C87225F00C77E43 /* ProfileVC.swift in Sources */,
 				890488052C871E5400C77E43 /* SignUpVC.swift in Sources */,
 				890621782C8C6B6500FC37D0 /* User.swift in Sources */,
 				895FEADC2CAD3C4E0063A08C /* ProfileCellUIModel.swift in Sources */,
 				890488012C871E5400C77E43 /* AppDelegate.swift in Sources */,
-				892573332CB3DE3300998A6E /* UserDefaultsManager.swift in Sources */,
+				892573862CB4260500998A6E /* UserDefaultsManager.swift in Sources */,
 				8906217E2C8F207F00FC37D0 /* UIViewController+showAlert.swift in Sources */,
 				890488152C87224200C77E43 /* LoginVC.swift in Sources */,
 				890488032C871E5400C77E43 /* SceneDelegate.swift in Sources */,

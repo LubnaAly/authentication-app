@@ -14,7 +14,7 @@ extension UIViewController {
             message: message,
             preferredStyle: .alert
         )
-        let okButton = UIAlertAction(title: "OK", style: .default)
+        let okButton = UIAlertAction(title: Constants.Alerts.buttonTitle, style: .default)
         alertController.addAction(okButton)
         present(alertController, animated: true)
     }
