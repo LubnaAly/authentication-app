@@ -15,9 +15,18 @@ class ProfileVC: UIViewController {
     
     // MARK: - Properties
     private let uiModels: [ProfileCellUIModel] = [
-        .init(title: "Name", value: UserDefaultsManager.shared.getName()),
-        .init(title: "Email", value: UserDefaultsManager.shared.getEmail()),
-        .init(title: "Gender", value: UserDefaultsManager.shared.getGender()),
+        .init(
+            title: Constants.Texts.name,
+            value: UserDefaultsManager.shared.getName()
+        ),
+        .init(
+            title: Constants.Texts.email,
+            value: UserDefaultsManager.shared.getEmail()
+        ),
+        .init(
+            title: Constants.Texts.gender,
+            value: UserDefaultsManager.shared.getGender()
+        ),
     ]
     
     // MARK: - Lifecycle Methods
@@ -30,7 +39,7 @@ class ProfileVC: UIViewController {
     
     // MARK: - Actions
     @IBAction private func logOutButtonTapped(_ sender: Any) {
-        UserDefaultsManager.shared.setIsLoggedIn(false)
+        UserDefaultsManager.shared.setLoginStatus(false)
         goToLogin()
     }
 }
@@ -39,8 +48,8 @@ class ProfileVC: UIViewController {
 extension ProfileVC {
     // MARK: - Setup UI
     func setupUI() {
-        title = "Profile"
-        logOutButton.setTitle("Log out", for: .normal)
+        title = Constants.Texts.profileTitle
+        logOutButton.setTitle(Constants.ButtonsTitles.logOut, for: .normal)
     }
     
     // MARK: - Display User Data
@@ -51,7 +60,7 @@ extension ProfileVC {
     
     // MARK: - Navigation
     func goToLogin() {
-        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
+        if let loginVC = storyboard?.instantiateViewController(identifier: Constants.Screens.login) {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
     }

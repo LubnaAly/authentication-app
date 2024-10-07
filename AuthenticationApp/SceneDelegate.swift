@@ -21,12 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 private extension SceneDelegate {
     func setRootViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(
+            name: Constants.Storyboards.main,
+            bundle: nil
+        )
         var rootVC = UIViewController()
         if UserDefaultsManager.shared.getLoginStatus() {
-            rootVC = storyboard.instantiateViewController(identifier: "ProfileVC")
+            rootVC = storyboard.instantiateViewController(identifier: Constants.Screens.profile)
         } else {
-            rootVC = storyboard.instantiateViewController(identifier: "LoginVC")
+            rootVC = storyboard.instantiateViewController(identifier: Constants.Screens.login)
         }
         window?.rootViewController = UINavigationController(rootViewController: rootVC)
     }

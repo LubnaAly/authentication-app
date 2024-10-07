@@ -61,66 +61,66 @@ private extension SignUpVC {
     }
     
     func setupTitle() {
-        title = "Sign Up"
+        title = Constants.Texts.signUpTitle
     }
     
     func setupLabels() {
-        nameLabel.text = "Name"
-        emailLabel.text = "Email"
-        enterPasswordLabel.text = "Enter Password"
-        confirmPasswordLabel.text = "Confirm Password"
-        userGenderLabel.text = "Gender"
-        loginHintLabel.text = "Already have an account?"
+        nameLabel.text = Constants.Texts.name
+        emailLabel.text = Constants.Texts.email
+        enterPasswordLabel.text = Constants.Texts.password
+        confirmPasswordLabel.text = Constants.Texts.passwordConfirmation
+        userGenderLabel.text = Constants.Texts.gender
+        loginHintLabel.text = Constants.Texts.loginHint
     }
     
     func setupTextFields() {
-        nameTextField.placeholder = "Enter your name"
-        enterPasswordTextField.placeholder = "Enter your password"
-        emailTextField.placeholder = "Enter your email"
-        confirmPasswordTextField.placeholder = "Confirm your password"
+        nameTextField.placeholder = Constants.Placeholders.name
+        emailTextField.placeholder =  Constants.Placeholders.email
+        enterPasswordTextField.placeholder = Constants.Placeholders.password
+        confirmPasswordTextField.placeholder =  Constants.Placeholders.passwordConfirmation
         enterPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
     }
     
     func setupButtons() {
-        signUpButton.setTitle("Sign Up", for: .normal)
-        loginButton.setTitle("Login", for: .normal)
+        signUpButton.setTitle(Constants.ButtonsTitles.signUp, for: .normal)
+        loginButton.setTitle(Constants.ButtonsTitles.login, for: .normal)
     }
     
     // MARK: - Data Validation
     func isValidUserData() -> Bool {
         guard let name = nameTextField.text, !name.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Name!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyNameMessage)
             return false
         }
         
         guard let email = emailTextField.text, !email.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Email!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyEmailMessage)
             return false
         }
         
         guard let email = emailTextField.text, isValidEmail(email) else {
-            showAlertMessage(title: "Alert", message: "Please enter a valid Email!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.validEmailMessage)
             return false
         }
         
         guard let password = enterPasswordTextField.text, !password.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Password!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyPasswordMessage)
             return false
         }
         
         guard let password = enterPasswordTextField.text, isValidPassword(password) else {
-            showAlertMessage(title: "Alert", message: "Please enter a correct Password!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.validPasswordMessage)
             return false
         }
         
         guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {
-            showAlertMessage(title: "Alert", message: "Please enter your Confirm your password!")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.emptyPasswordConfirmationMessage)
             return false
         }
         
         guard confirmPasswordTextField.text == enterPasswordTextField.text else {
-            showAlertMessage(title: "Alert", message: "Please enter the same Password")
+            showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.samePasswordMessage)
             return false
         }
         
@@ -128,13 +128,13 @@ private extension SignUpVC {
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegex = Constants.Regex.email
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+        let passwordRegex = Constants.Regex.password
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
@@ -161,7 +161,7 @@ private extension SignUpVC {
     
     // MARK: - Navigation
     func goToLogin() {
-        if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
+        if let loginVC = storyboard?.instantiateViewController(identifier: Constants.Screens.login) {
             navigationController?.setViewControllers([loginVC], animated: true)
         }
     }
