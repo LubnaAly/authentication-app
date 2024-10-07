@@ -9,41 +9,47 @@ import UIKit
 
 class ProfileVC: UIViewController {
     // MARK: - Outlets
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet private weak var logOutButton: UIButton!
+    
     // MARK: - Properties
     private let uiModels: [ProfileCellUIModel] = [
         .init(title: "Name", value: UserDefaults.standard.string(forKey: "name") ?? ""),
         .init(title: "Email", value: UserDefaults.standard.string(forKey: "email") ?? ""),
         .init(title: "Gender", value: UserDefaults.standard.string(forKey: "gender") ?? ""),
     ]
-    // MARK: - viewDidLoad
+    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setProfileImage()
         tableView.dataSource = self
     }
+    
     // MARK: - Actions
-    @IBAction func logOutButtonTapped(_ sender: Any) {
+    @IBAction private func logOutButtonTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         goToLogin()
     }
 }
 
-// MARK: - Extensions
+// MARK: - Private Methods
 extension ProfileVC {
+    // MARK: - Setup UI
     func setupUI() {
         title = "Profile"
         logOutButton.setTitle("Log out", for: .normal)
     }
-    // MARK: - Access user data
+    
+    // MARK: - Display User Data
     func setProfileImage() {
         guard let data = UserDefaults.standard.data(forKey: "profileImage") else { return }
         profileImageView.image = UIImage(data: data)
     }
-    // MARK: - Navigate to the previous ViewController
+    
+    // MARK: - Navigation
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
@@ -51,7 +57,7 @@ extension ProfileVC {
     }
 }
 
-// MARK: - // MARK: - TableView delegation extension
+// MARK: - UITableViewDataSource
 extension ProfileVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         uiModels.count
