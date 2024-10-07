@@ -8,16 +8,19 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-    @IBOutlet weak var profileImageView: UIImageView!
+    // MARK: - Outlets
+    @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet private weak var logOutButton: UIButton!
     
+    // MARK: - Properties
     private let uiModels: [ProfileCellUIModel] = [
         .init(title: "Name", value: UserDefaults.standard.string(forKey: "name") ?? ""),
         .init(title: "Email", value: UserDefaults.standard.string(forKey: "email") ?? ""),
         .init(title: "Gender", value: UserDefaults.standard.string(forKey: "gender") ?? ""),
     ]
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -25,23 +28,28 @@ class ProfileVC: UIViewController {
         tableView.dataSource = self
     }
     
-    @IBAction func logOutButtonTapped(_ sender: Any) {
+    // MARK: - Actions
+    @IBAction private func logOutButtonTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         goToLogin()
     }
 }
 
+// MARK: - Private Methods
 extension ProfileVC {
+    // MARK: - Setup UI
     func setupUI() {
         title = "Profile"
         logOutButton.setTitle("Log out", for: .normal)
     }
     
+    // MARK: - Display User Data
     func setProfileImage() {
         guard let data = UserDefaults.standard.data(forKey: "profileImage") else { return }
         profileImageView.image = UIImage(data: data)
     }
     
+    // MARK: - Navigation
     func goToLogin() {
         if let loginVC = storyboard?.instantiateViewController(identifier: "LoginVC") {
             navigationController?.setViewControllers([loginVC], animated: true)
@@ -49,6 +57,7 @@ extension ProfileVC {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ProfileVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         uiModels.count

@@ -8,31 +8,36 @@
 import UIKit
 
 class LoginVC: UIViewController {
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var enterPasswordLabel: UILabel!
-    @IBOutlet weak var enterPasswordTextField: UITextField!
-    @IBOutlet weak var loginButtonTapped: UIButton!
-    @IBOutlet weak var signUpHintLabel: UILabel!
-    @IBOutlet weak var signUpButton: UIButton!
+    // MARK: - Outlets
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var enterPasswordLabel: UILabel!
+    @IBOutlet private weak var enterPasswordTextField: UITextField!
+    @IBOutlet private weak var loginButtonTapped: UIButton!
+    @IBOutlet private weak var signUpHintLabel: UILabel!
+    @IBOutlet private weak var signUpButton: UIButton!
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    @IBAction func loginButtonTapped(_ sender: Any) {
+    // MARK: - Actions
+    @IBAction private func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
     }
     
-    @IBAction func signUpButtonTapped(_ sender: Any) {
+    @IBAction private func signUpButtonTapped(_ sender: Any) {
         goToSignUp()
     }
 }
 
+// MARK: - Private Methods
 private extension LoginVC {
+    // MARK: - Setup UI
     func setupUI() {
         setupTitle()
         setupLabels()
@@ -62,6 +67,7 @@ private extension LoginVC {
         signUpButton.setTitle("Sign Up", for: .normal)
     }
     
+    // MARK: - Data Validation
     func isValidUserData() -> Bool {
         guard let email = emailTextField.text, !email.isEmpty else {
             showAlertMessage(title: "Alert", message: "Please enter your Email!")
@@ -88,6 +94,7 @@ private extension LoginVC {
         return true
     }
     
+    // MARK: - Navigation
     func goToProfile() {
         if let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") {
             navigationController?.setViewControllers([profileVC], animated: true)
