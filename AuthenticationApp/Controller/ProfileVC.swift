@@ -15,9 +15,9 @@ class ProfileVC: UIViewController {
     
     // MARK: - Properties
     private let uiModels: [ProfileCellUIModel] = [
-        .init(title: "Name", value: UserDefaults.standard.string(forKey: "name") ?? ""),
-        .init(title: "Email", value: UserDefaults.standard.string(forKey: "email") ?? ""),
-        .init(title: "Gender", value: UserDefaults.standard.string(forKey: "gender") ?? ""),
+        .init(title: "Name", value: UserDefaultsManager.shared.getName()),
+        .init(title: "Email", value: UserDefaultsManager.shared.getEmail()),
+        .init(title: "Gender", value: UserDefaultsManager.shared.getGender()),
     ]
     
     // MARK: - Lifecycle Methods
@@ -30,7 +30,7 @@ class ProfileVC: UIViewController {
     
     // MARK: - Actions
     @IBAction private func logOutButtonTapped(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        UserDefaultsManager.shared.setIsLoggedIn(false)
         goToLogin()
     }
 }
@@ -45,7 +45,7 @@ extension ProfileVC {
     
     // MARK: - Display User Data
     func setProfileImage() {
-        guard let data = UserDefaults.standard.data(forKey: "profileImage") else { return }
+        guard let data = UserDefaultsManager.shared.getProfileImage() else { return }
         profileImageView.image = UIImage(data: data)
     }
     
