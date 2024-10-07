@@ -142,10 +142,10 @@ private extension SignUpVC {
     // MARK: - Saving User Data
     func saveUserData() {
         saveImage()
-        UserDefaults.standard.set(nameTextField.text, forKey: "name")
-        UserDefaults.standard.set(emailTextField.text, forKey: "email")
-        UserDefaults.standard.set(enterPasswordTextField.text, forKey: "password")
-        UserDefaults.standard.set(genderLabel.text, forKey: "gender")
+        UserDefaultsManager.shared.setName(nameTextField.text ?? "")
+        UserDefaultsManager.shared.setEmail(emailTextField.text ?? "")
+        UserDefaultsManager.shared.setPassword(enterPasswordTextField.text ?? "")
+        UserDefaultsManager.shared.setGender(genderLabel.text ?? "")
     }
     
     func presentImagePicker() {
@@ -156,7 +156,7 @@ private extension SignUpVC {
     
     func saveImage() {
         guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-        UserDefaults.standard.set(data, forKey: "profileImage")
+        UserDefaultsManager.shared.setProfileImage(data)
     }
     
     // MARK: - Navigation

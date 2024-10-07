@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
     @IBAction private func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
-        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaultsManager.shared.setIsLoggedIn(true)
     }
     
     @IBAction private func signUpButtonTapped(_ sender: Any) {
@@ -74,7 +74,7 @@ private extension LoginVC {
             return false
         }
         
-        let userEmail = UserDefaults.standard.string(forKey: "email")
+        let userEmail = UserDefaultsManager.shared.getEmail()
         guard email == userEmail else {
             showAlertMessage(title: "Alert", message: "Please enter a registered Email!")
             return false
@@ -85,7 +85,7 @@ private extension LoginVC {
             return false
         }
         
-        let userPassword = UserDefaults.standard.string(forKey: "password")
+        let userPassword = UserDefaultsManager.shared.getPassword()
         guard password == userPassword else {
             showAlertMessage(title: "Alert", message: "Please enter the correct Password!")
             return false

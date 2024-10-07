@@ -23,7 +23,7 @@ private extension SceneDelegate {
     func setRootViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var rootVC = UIViewController()
-        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+        if UserDefaultsManager.shared.getLoginStatus() {
             rootVC = storyboard.instantiateViewController(identifier: "ProfileVC")
         } else {
             rootVC = storyboard.instantiateViewController(identifier: "LoginVC")
