@@ -22,7 +22,9 @@ class UserDefaultsManager {
         case profileImage
         case isLoggedIn
     }
-    
+}
+
+extension UserDefaultsManager: DataManaging {
     // MARK: - Setters
     func setName(_ name: String) {
         UserDefaults.standard.set(name, forKey: UserDefaultsKeys.name.rawValue)

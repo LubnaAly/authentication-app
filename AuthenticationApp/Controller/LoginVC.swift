@@ -17,6 +17,9 @@ class LoginVC: UIViewController {
     @IBOutlet private weak var signUpHintLabel: UILabel!
     @IBOutlet private weak var signUpButton: UIButton!
     
+    // MARK: - Properties
+    private let dataManager: DataManaging = UserDefaultsManager.shared
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class LoginVC: UIViewController {
     @IBAction private func loginButtonTapped(_ sender: Any) {
         guard isValidUserData() else { return }
         goToProfile()
-        UserDefaultsManager.shared.setLoginStatus(true)
+        dataManager.setLoginStatus(true)
     }
     
     @IBAction private func signUpButtonTapped(_ sender: Any) {
@@ -74,7 +77,7 @@ private extension LoginVC {
             return false
         }
         
-        let userEmail = UserDefaultsManager.shared.getEmail()
+        let userEmail = dataManager.getEmail()
         guard email == userEmail else {
             showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.registeredEmailMessage)
             return false
@@ -85,7 +88,7 @@ private extension LoginVC {
             return false
         }
         
-        let userPassword = UserDefaultsManager.shared.getPassword()
+        let userPassword = dataManager.getPassword()
         guard password == userPassword else {
             showAlertMessage(title: Constants.Alerts.title, message: Constants.Alerts.correctPasswordMessage)
             return false

@@ -24,6 +24,9 @@ class SignUpVC: UIViewController {
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     
+    // MARK: - Properties
+    private let dataManager: DataManaging = UserDefaultsManager.shared
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,10 +145,10 @@ private extension SignUpVC {
     // MARK: - Saving User Data
     func saveUserData() {
         saveImage()
-        UserDefaultsManager.shared.setName(nameTextField.text ?? "")
-        UserDefaultsManager.shared.setEmail(emailTextField.text ?? "")
-        UserDefaultsManager.shared.setPassword(enterPasswordTextField.text ?? "")
-        UserDefaultsManager.shared.setGender(genderLabel.text ?? "")
+        dataManager.setName(nameTextField.text ?? "")
+        dataManager.setEmail(emailTextField.text ?? "")
+        dataManager.setPassword(enterPasswordTextField.text ?? "")
+        dataManager.setGender(genderLabel.text ?? "")
     }
     
     func presentImagePicker() {
@@ -156,7 +159,7 @@ private extension SignUpVC {
     
     func saveImage() {
         guard let data = profileImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-        UserDefaultsManager.shared.setProfileImage(data)
+        dataManager.setProfileImage(data)
     }
     
     // MARK: - Navigation
