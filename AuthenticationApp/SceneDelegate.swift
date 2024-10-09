@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let dataManager: DataManaging = UserDefaultsManager.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -26,7 +27,7 @@ private extension SceneDelegate {
             bundle: nil
         )
         var rootVC = UIViewController()
-        if UserDefaultsManager.shared.getLoginStatus() {
+        if dataManager.getLoginStatus() {
             rootVC = storyboard.instantiateViewController(identifier: Constants.Screens.profile)
         } else {
             rootVC = storyboard.instantiateViewController(identifier: Constants.Screens.login)

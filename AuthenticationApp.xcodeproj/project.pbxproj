@@ -21,6 +21,7 @@
 		892573062CB0587200998A6E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 892573052CB0587200998A6E /* IQKeyboardManagerSwift */; };
 		892573392CB40FB900998A6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573382CB40FB900998A6E /* Constants.swift */; };
 		892573862CB4260500998A6E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573842CB4260500998A6E /* UserDefaultsManager.swift */; };
+		892573882CB5452000998A6E /* DataManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892573872CB5452000998A6E /* DataManaging.swift */; };
 		895FEADC2CAD3C4E0063A08C /* ProfileCellUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		8906217D2C8F207F00FC37D0 /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
 		892573382CB40FB900998A6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		892573842CB4260500998A6E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		892573872CB5452000998A6E /* DataManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManaging.swift; sourceTree = "<group>"; };
 		895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellUIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 		892573852CB4260500998A6E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				892573872CB5452000998A6E /* DataManaging.swift */,
 				892573842CB4260500998A6E /* UserDefaultsManager.swift */,
 			);
 			path = Utilities;
@@ -220,6 +223,7 @@
 				890621782C8C6B6500FC37D0 /* User.swift in Sources */,
 				895FEADC2CAD3C4E0063A08C /* ProfileCellUIModel.swift in Sources */,
 				890488012C871E5400C77E43 /* AppDelegate.swift in Sources */,
+				892573882CB5452000998A6E /* DataManaging.swift in Sources */,
 				892573862CB4260500998A6E /* UserDefaultsManager.swift in Sources */,
 				8906217E2C8F207F00FC37D0 /* UIViewController+showAlert.swift in Sources */,
 				890488152C87224200C77E43 /* LoginVC.swift in Sources */,

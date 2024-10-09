@@ -14,32 +14,21 @@ class ProfileVC: UIViewController {
     @IBOutlet private weak var logOutButton: UIButton!
     
     // MARK: - Properties
-    private let uiModels: [ProfileCellUIModel] = [
-        .init(
-            title: Constants.Texts.name,
-            value: UserDefaultsManager.shared.getName()
-        ),
-        .init(
-            title: Constants.Texts.email,
-            value: UserDefaultsManager.shared.getEmail()
-        ),
-        .init(
-            title: Constants.Texts.gender,
-            value: UserDefaultsManager.shared.getGender()
-        ),
-    ]
+    private let dataManager: DataManaging = UserDefaultsManager.shared
+    private var uiModels: [ProfileCellUIModel]?
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setProfileImage()
+        setUIModels()
         tableView.dataSource = self
     }
     
     // MARK: - Actions
     @IBAction private func logOutButtonTapped(_ sender: Any) {
-        UserDefaultsManager.shared.setLoginStatus(false)
+        dataManager.setLoginStatus(false)
         goToLogin()
     }
 }
@@ -54,8 +43,25 @@ extension ProfileVC {
     
     // MARK: - Display User Data
     func setProfileImage() {
-        guard let data = UserDefaultsManager.shared.getProfileImage() else { return }
+        guard let data = dataManager.getProfileImage() else { return }
         profileImageView.image = UIImage(data: data)
+    }
+    
+    func setUIModels() {
+        uiModels = [
+            .init(
+                title: Constants.Texts.name,
+                value: dataManager.getName()
+            ),
+            .init(
+                title: Constants.Texts.email,
+                value: dataManager.getEmail()
+            ),
+            .init(
+                title: Constants.Texts.gender,
+                value: dataManager.getGender()
+            ),
+        ]
     }
     
     // MARK: - Navigation
@@ -69,15 +75,15 @@ extension ProfileVC {
 // MARK: - UITableViewDataSource
 extension ProfileVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        uiModels.count
+        uiModels?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.selectionStyle = .none
         cell.backgroundColor = .tertiarySystemGroupedBackground
-        cell.textLabel?.text = uiModels[indexPath.row].title
-        cell.detailTextLabel?.text = uiModels[indexPath.row].value
+        cell.textLabel?.text = uiModels?[indexPath.row].title ?? ""
+        cell.detailTextLabel?.text = uiModels?[indexPath.row].value ?? ""
         return cell
     }
 }
