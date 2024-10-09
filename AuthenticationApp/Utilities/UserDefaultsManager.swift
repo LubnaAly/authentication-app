@@ -11,39 +11,43 @@ class UserDefaultsManager {
     // MARK: - Singleton
     static let shared = UserDefaultsManager()
     
+    private var user = User(name: "", email: "", password: "", gender: .male)
+    
     private init() {}
     
     // MARK: - UserDefaultsKeys
     private enum UserDefaultsKeys: String {
-        case name
-        case email
-        case password
-        case gender
-        case profileImage
+        case user
         case isLoggedIn
     }
 }
 
+// MARK: - DataManaging
 extension UserDefaultsManager: DataManaging {
     // MARK: - Setters
     func setName(_ name: String) {
-        UserDefaults.standard.set(name, forKey: UserDefaultsKeys.name.rawValue)
+        user.name = name        
+        saveUser()
     }
     
     func setEmail(_ email: String) {
-        UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.rawValue)
+        user.email = email
+        saveUser()
     }
     
     func setPassword(_ password: String) {
-        UserDefaults.standard.set(password, forKey: UserDefaultsKeys.password.rawValue)
+        user.password = password
+        saveUser()
     }
     
     func setGender(_ gender: String) {
-        UserDefaults.standard.set(gender, forKey: UserDefaultsKeys.gender.rawValue)
+        user.gender = Gender(rawValue: gender) ?? .female
+        saveUser()
     }
     
     func setProfileImage(_ profileImageData: Data) {
-        UserDefaults.standard.set(profileImageData, forKey: UserDefaultsKeys.profileImage.rawValue)
+        user.profileImage = profileImageData
+        saveUser()
     }
     
     func setLoginStatus(_ isLoggedIn: Bool ) {
@@ -51,27 +55,49 @@ extension UserDefaultsManager: DataManaging {
     }
     
     // MARK: - Getters
+        
     func getName() -> String {
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.name.rawValue) ?? ""
+        loadUser()
+        return user.name
     }
     
     func getEmail() -> String {
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.email.rawValue) ?? ""
+        loadUser()
+        return user.email
     }
     
     func getPassword() -> String {
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.password.rawValue) ?? ""
+        loadUser()
+        return user.password
     }
     
     func getGender() -> String {
-        UserDefaults.standard.string(forKey: UserDefaultsKeys.gender.rawValue) ?? ""
+        loadUser()
+        return user.gender.rawValue
     }
     
     func getProfileImage() -> Data? {
-        UserDefaults.standard.data(forKey: UserDefaultsKeys.profileImage.rawValue)
+        loadUser()
+        return user.profileImage
     }
     
     func getLoginStatus() -> Bool {
         UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+    }
+}
+
+// MARK: - Private Methods
+private extension UserDefaultsManager {
+    func saveUser() {
+        if let encoded = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.user.rawValue)
+        }
+    }
+    
+    func loadUser() {
+        if let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.user.rawValue) as? Data,
+           let user = try? JSONDecoder().decode(User.self, from: data) {
+            self.user = user
+        }
     }
 }
