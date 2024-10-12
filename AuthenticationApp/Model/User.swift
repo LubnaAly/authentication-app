@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Recordable {
+    var id: Int?
     var name: String
-    var profileImage: Data?
+    var profileImageData: Data?
     var email: String
     var password: String
     var gender: Gender

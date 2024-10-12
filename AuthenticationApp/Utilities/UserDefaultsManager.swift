@@ -46,7 +46,7 @@ extension UserDefaultsManager: DataManaging {
     }
     
     func setProfileImage(_ profileImageData: Data) {
-        user.profileImage = profileImageData
+        user.profileImageData = profileImageData
         saveUser()
     }
     
@@ -78,7 +78,7 @@ extension UserDefaultsManager: DataManaging {
     
     func getProfileImage() -> Data? {
         loadUser()
-        return user.profileImage
+        return user.profileImageData
     }
     
     func getLoginStatus() -> Bool {

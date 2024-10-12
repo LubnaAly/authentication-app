@@ -14,7 +14,7 @@ class ProfileVC: UIViewController {
     @IBOutlet private weak var logOutButton: UIButton!
     
     // MARK: - Properties
-    private let dataManager: DataManaging = UserDefaultsManager.shared
+    private let dataManager: DataManaging = DatabaseManager.shared
     private var uiModels: [ProfileCellUIModel]?
     
     // MARK: - Lifecycle Methods
