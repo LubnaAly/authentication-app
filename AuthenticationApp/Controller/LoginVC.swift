@@ -18,7 +18,7 @@ class LoginVC: UIViewController {
     @IBOutlet private weak var signUpButton: UIButton!
     
     // MARK: - Properties
-    private let dataManager: DataManaging = UserDefaultsManager.shared
+    private let dataManager: DataManaging = DatabaseManager.shared
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {

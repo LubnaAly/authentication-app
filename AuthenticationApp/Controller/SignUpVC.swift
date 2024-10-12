@@ -25,7 +25,7 @@ class SignUpVC: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     
     // MARK: - Properties
-    private let dataManager: DataManaging = UserDefaultsManager.shared
+    private let dataManager: DataManaging = DatabaseManager.shared
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -144,11 +144,11 @@ private extension SignUpVC {
     
     // MARK: - Saving User Data
     func saveUserData() {
-        saveImage()
         dataManager.setName(nameTextField.text ?? "")
         dataManager.setEmail(emailTextField.text ?? "")
         dataManager.setPassword(enterPasswordTextField.text ?? "")
         dataManager.setGender(genderLabel.text ?? "")
+        saveImage()
     }
     
     func presentImagePicker() {
