@@ -47,6 +47,7 @@
 		892573842CB4260500998A6E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		892573872CB5452000998A6E /* DataManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManaging.swift; sourceTree = "<group>"; };
 		895FEADB2CAD3C4E0063A08C /* ProfileCellUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellUIModel.swift; sourceTree = "<group>"; };
+		89CA07462CCBBB0100BF7044 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 			children = (
 				890487FF2C871E5400C77E43 /* AuthenticationApp */,
 				890487FE2C871E5400C77E43 /* Products */,
+				89CA07462CCBBB0100BF7044 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
