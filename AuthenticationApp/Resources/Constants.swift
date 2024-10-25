@@ -24,7 +24,7 @@ enum Constants {
     // MARK: - Texts
     enum Texts {
         static let signUpTitle = "Sign Up"
-        static let loginTitle = "Login"
+        static let loginTitle = "Sign In"
         static let profileTitle = "Profile"
         static let email = "Email"
         static let name = "Name"
@@ -46,8 +46,8 @@ enum Constants {
     // MARK: - ButtonsTitles
     enum ButtonsTitles {
         static let signUp = "Sign Up"
-        static let login = "Login"
-        static let logOut = "Log Out"
+        static let login = "Sign In"
+        static let logOut = "Sign Out"
     }
     
     // MARK: - Alerts
